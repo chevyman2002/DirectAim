@@ -72,3 +72,12 @@ Diameter of Fixing Hole: 0.13in
 Height of Button: 0.12in
 Actuator Size: 2.0× 0.16in
 Actuator Action: momentary snap action switch
+
+📜 License & Disclaimer
+License: This project is released under the MIT License. You are free to use, modify, and distribute it for personal or commercial use.
+
+Disclaimer of Liability: > This project is provided "as is" without any warranty of any kind. The author is not responsible for any damage to hardware, loss of data, or personal injury resulting from the assembly or use of this device.
+
+Safety Warning: > * This is a DIY electronics project. Always double-check wiring before applying power.
+
+If using a 3D-printed shell shaped like a real firearm, please follow local laws regarding "Orange Tips" and do not use the device in public spaces where it could be mistaken for a real weapon.
