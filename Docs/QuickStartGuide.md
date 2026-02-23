@@ -1,47 +1,47 @@
-# 🚀 Quick Start Guide: DirectAim
-This project allows you to build a high-performance, absolute-positioning pointer for arcade games and desktop use. It uses an IMU (Inertial Measurement Unit) to track your point-of-aim without the need for infrared bars or light sensors.
+🚀 DirectAim Quick Start Guide
+This guide will get your DirectAim spatial gun flashed and calibrated in minutes.
 
-## 1. Prerequisites
-Hardware: Teensy 4.0 & BNO08x (BNO085 or BNO086).
+1. Software Setup
+Before plugging in your hardware, ensure your environment is ready:
 
-Software: Arduino IDE with the Teensyduino add-on installed.
+Arduino IDE: Download here (v2.0+ recommended).
 
-Library: Open the Library Manager in Arduino (Ctrl+Shift+I) and install "SparkFun BNO08x".
+Teensy Support: Open the Boards Manager in Arduino IDE, search for Teensy, and install.
 
-## 2. Wiring Diagram
-|BNO Pin|Teensy Pin|Description|
-|----|----|----|
-|SDA|18|I2C Data (Blue)
-|SCL|19|I2C Clock (Yellow)
-|RST|2|CRITICAL: Hardware Reset
-|VIN|3.3V|Power|
-|GND|GND|Ground|
-|Trigger|0|Button to Ground|
-|Recenter|1|Button to Ground|
+BNO08x Library: Open the Library Manager, search for SparkFun BNO08x, and install.
 
-## 3. Software Configuration
-Before uploading, open the code and adjust the following variables to match your setup:
+2. Prepare the Firmware
+Open Firmware/DirectAim/DirectAim.ino in the Arduino IDE.
 
-NATIVE_X & NATIVE_Y: Your screen resolution (e.g., 1920, 1080).
+Configure your Screen: Update the NATIVE_X, NATIVE_Y, and SCALE variables to match your monitor.
 
-SCALE: Your Windows DPI scaling (e.g., 1.0 for 100%, 1.5 for 150%).
+Example: If you use a 4K TV at 150% scaling, set NATIVE_X = 3840, NATIVE_Y = 2160, and SCALE = 1.5.
 
-FOV_X & FOV_Y: Sensitivity. If you have to move too far to reach the edges, decrease these numbers.
+Set USB Type: Go to Tools > USB Type and select "Keyboard + Mouse + Joystick". (This is mandatory for the code to compile).
 
-## 4. Uploading to Teensy
-Connect your Teensy via USB.
+3. Wiring Reference
+If you are building your own or troubleshooting, here is the official DirectAim pinout:
 
-In the Arduino IDE, go to Tools > Board and select Teensy 4.0.
+|Component|Teensy Pin|HID Output|
+|---|---|---|
+|Trigger|0|Left Click / Joy 1|
+|Recenter (Blue)|1|System Calibration|
+|Action 1 (Red)|3|Right Click / Joy 2|
+|Action 2 (Green)|4|Keyboard '1' / Joy 3|
+|IMU Reset|2|Hardware Pulse (White Wire)|
 
-Go to Tools > USB Type and select "Keyboard + Mouse + Joystick".
+4. Flashing and Calibration
+Connect the Teensy to your PC via Micro-USB.
 
-Click Upload.
+Click Upload in the Arduino IDE.
 
-## 5. First-Time Calibration
-Hold your controller and point it at the dead center of your screen.
+To Calibrate: Point the gun at the exact center of your screen and tap the Blue Button. Your aim is now locked.
 
-Press the Recenter Button (Pin 1).
+To Reset/Re-flash: No need to open the shell! Hold the Trigger + Blue + Red + Green buttons for 5 seconds. The LED will flash, and the gun will enter programming mode.
 
-The cursor should snap to the center. Move the gun around to verify the cursor tracks your movement.
+5. Emulator Setup (Teknoparrot/MAME)
+DirectAim is designed to be "plug and play."
 
-If the movement is inverted, see the Troubleshooting section in the main documentation.
+Action 2 (Green): This is mapped to the '1' key. In most emulators, this will automatically act as the "Start" or "Coin" button.
+
+Accuracy Tip: If the cursor doesn't reach the corners of your screen, slightly decrease the FOV_X or FOV_Y values in the firmware and re-upload.
