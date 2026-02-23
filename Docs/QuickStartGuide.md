@@ -1,7 +1,7 @@
-🚀 DirectAim Quick Start Guide
+# 🚀 DirectAim Quick Start Guide
 This guide will get your DirectAim spatial gun flashed and calibrated in minutes.
 
-1. Software Setup
+## 1. Software Setup
 Before plugging in your hardware, ensure your environment is ready:
 
 Arduino IDE: Download here (v2.0+ recommended).
@@ -10,7 +10,7 @@ Teensy Support: Open the Boards Manager in Arduino IDE, search for Teensy, and i
 
 BNO08x Library: Open the Library Manager, search for SparkFun BNO08x, and install.
 
-2. Prepare the Firmware
+## 2. Prepare the Firmware
 Open Firmware/DirectAim/DirectAim.ino in the Arduino IDE.
 
 Configure your Screen: Update the NATIVE_X, NATIVE_Y, and SCALE variables to match your monitor.
@@ -19,7 +19,7 @@ Example: If you use a 4K TV at 150% scaling, set NATIVE_X = 3840, NATIVE_Y = 216
 
 Set USB Type: Go to Tools > USB Type and select "Keyboard + Mouse + Joystick". (This is mandatory for the code to compile).
 
-3. Wiring Reference
+## 3. Wiring Reference
 If you are building your own or troubleshooting, here is the official DirectAim pinout:
 
 |Component|Teensy Pin|HID Output|
@@ -30,7 +30,7 @@ If you are building your own or troubleshooting, here is the official DirectAim 
 |Action 2 (Green)|4|Keyboard '1' / Joy 3|
 |IMU Reset|2|Hardware Pulse (White Wire)|
 
-4. Flashing and Calibration
+## 4. Flashing and Calibration
 Connect the Teensy to your PC via Micro-USB.
 
 Click Upload in the Arduino IDE.
@@ -39,7 +39,7 @@ To Calibrate: Point the gun at the exact center of your screen and tap the Blue 
 
 To Reset/Re-flash: No need to open the shell! Hold the Trigger + Blue + Red + Green buttons for 5 seconds. The LED will flash, and the gun will enter programming mode.
 
-5. Emulator Setup (Teknoparrot/MAME)
+## 5. Emulator Setup (Teknoparrot/MAME)
 DirectAim is designed to be "plug and play."
 
 Action 2 (Green): This is mapped to the '1' key. In most emulators, this will automatically act as the "Start" or "Coin" button.
