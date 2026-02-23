@@ -50,16 +50,17 @@ Shell: A heavily modified Halo Pistol 3D model, redesigned for secure component 
 Trigger: A custom-engineered mechanism that utilizes a limit switch with a lift-arm design for a tactile, "clicky" arcade feel.
 
 Bill of Materials
-Component              Link                           Note
-Teensy 4.0             https://amzn.to/4qgSd0F    High-speed HID-capable brain.
-SparkFun BNO086 IMU    https://amzn.to/458Fchj    The "eyes" of the gun. 9-axis drift-free tracking.
-I2C QWIIC Cable Kit    https://amzn.to/45rZCCb    Cut one end off to solder directly to Teensy pins 18, 19, 3.3V, and GND.
-6pcs Micro Limit Switch https://amzn.to/4sv4IqV   Use COM and NO blades. Designed for the custom "lift-arm" trigger.
-6-Color Wire Spools    https://amzn.to/3YzlOX2    You could do with a smaller gauge wire, this is just what I had on hand from a year+ ago.
-6x6x8mm buttons w/caps https://amzn.to/4tnO2SN	  84Pcs 6×6×8mm Momentary Tactile Tact Push Button Switch with Button Caps of 7 Color,Each Color 12pcs(Black,Red,Blue,Yellow,White, Green,Gray)
-Soldering Station      https://amzn.to/3NheQDA    I've had this one for over a year and used it quite a bit without any issues so far.
-3-Pack 10ft USB-Micro Cables - https://amzn.to/4jy5Gi1 - I don't have these but may eventually buy them since I'm using a 6ft FireStick cable for now.
-Machine Screws #6-32x1/2" https://amzn.to/4a5fOfh I haven't bought any yet, and may even try 3D printing some, but here's a Lowe's link as well: https://www.lowes.com/pd/Hillman-6-32-x-1-2-in-Slotted-Drive-Machine-Screws-14-Count/3035915
+|Component|Link|Note|
+|---|---|---|
+|Teensy 4.0|https://amzn.to/4qgSd0F|High-speed HID-capable brain.|
+|SparkFun BNO086 IMU|https://amzn.to/458Fchj|The "eyes" of the gun. 9-axis drift-free tracking.|
+|I2C QWIIC Cable Kit|https://amzn.to/45rZCCb|Cut one end off to solder directly to Teensy pins 18, 19, 3.3V, and GND.|
+|6pcs Micro Limit Switch|https://amzn.to/4sv4IqV|Use COM and NO blades. Designed for the custom "lift-arm" trigger.|
+|6-Color Wire Spools|https://amzn.to/3YzlOX2|You could do with a smaller gauge wire, this is just what I had on hand from a year+ ago.|
+|6x6x8mm buttons w/caps|https://amzn.to/4tnO2SN|84Pcs 6×6×8mm Momentary Tactile Tact Push Button Switch with Button Caps of 7 Color,Each Color 12pcs(Black,Red,Blue,Yellow,White, Green,Gray)|
+|Soldering Station|https://amzn.to/3NheQDA|I've had this one for over a year and used it quite a bit without any issues so far.|
+|3-Pack 10ft USB-Micro Cables|https://amzn.to/4jy5Gi1|I don't have these but may eventually buy them since I'm using a 6ft FireStick cable for now.|
+|Machine Screws #6-32x1/2"|https://amzn.to/4a5fOfh|I haven't bought any yet, and may even try 3D printing some, but here's a Lowe's link as well: https://www.lowes.com/pd/Hillman-6-32-x-1-2-in-Slotted-Drive-Machine-Screws-14-Count/3035915|
 
 Trigger Pin - I haven't figured out what I'm going to do for this. I tried 3D printing pins to snugly fit, and even tried printing-in-place the trigger with a solid pin going through holes - but it would snap every time I tried to use it. For now, I have a 1/16" hole going all the way through and I took a cotter pin I had lying around and secured it with that. I'll change this eventually, I think, to avoid getting scratched by it in the future (hasn't happened yet, but it will eventually).
 
