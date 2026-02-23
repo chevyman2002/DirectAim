@@ -1,36 +1,47 @@
-# 🛠️ Troubleshooting
+# 🛠️ Advanced Troubleshooting & Common Fixes
+## 1. The "9-Flash" SOS (IMU Connection Error)
+If the Teensy LED flashes 9 times in a row, pauses, and repeats, the code is hanging because it cannot communicate with the BNO08x sensor.
 
-## 1. The Sensor Won't Initialize (LED blinking rapidly)
-Check the White Wire: Ensure the BNO08x RST pin is connected to Teensy Pin 2. DirectAim pulses this pin on startup to clear I2C errors. Without this, the sensor will fail to start 90% of the time.
+Check Wiring: Ensure the Blue (SDA) and Yellow (SCL) wires are securely connected to Pins 18 and 19.
 
-Wiring Check: Double-check that SDA is on Pin 18 and SCL is on Pin 19. If using the Qwiic kit, ensure no stray solder bridges are touching the tiny pins.
+The White Wire: Ensure the RST pin of the IMU is connected to Teensy Pin 2. The firmware pulses this pin to "wake up" the sensor; without it, the sensor will fail to initialize 90% of the time.
 
-## 2. The Cursor is "Down and to the Right" of Aim
-DPI Scaling Mismatch: This happens when Windows Scaling (150%, 200%, etc.) is active.
+I2C Address: If you are using a non-SparkFun board, the I2C address might be different. The code checks 0x4B and 0x4A by default.
 
-Right-click your desktop > Display Settings > Scale.
+## 2. "Mouse/Joystick Not Declared" Compilation Error
+If the Arduino IDE throws errors during compilation stating that Mouse, Keyboard, or Joystick were not declared in this scope:
 
-Ensure the SCALE variable in the firmware matches this value (e.g., 1.5 for 150%).
+The Fix: This happens when the IDE defaults to "Serial" mode. Go to Tools > USB Type and select "Keyboard + Mouse + Joystick". This enables the HID libraries required for the gun to function.
 
-Resolution Check: Ensure NATIVE_X and NATIVE_Y in the code match your actual screen resolution.
+## 3. The 15-Second "Nuclear" Reset
+If your Teensy becomes completely unresponsive, won't show up as a COM port, or the "Soft Reset" fails:
 
-## 3. One or Both Axes are Inverted
-If your gun moves left when you point right, or down when you point up:
+The Fix:
+1. Hold down the physical button on the Teensy board for exactly 15 seconds.
+2. The LED will flash briefly. Release the button.
+3. The Teensy will spend 30–60 seconds wiping its memory and restoring the factory "Blink" program. You can then re-upload the DirectAim firmware.
 
-Go to the map() section in the loop.
+## 4. Teknoparrot / Emulator Mapping Issues
+If your Action Buttons (Red/Green) aren't registering in certain arcade emulators:
 
-To flip X: Swap RES_X, 0 to 0, RES_X.
+Middle Click Bug: Many emulators do not recognize the Middle Mouse Button (Mouse 3). In v1.2+, the Green Button is mapped to the Keyboard '1' key and Joystick Button 3.
 
-To flip Y: Swap RES_Y, 0 to 0, RES_Y.
+Recommendation: Map "Start" or "Coin" in your emulator to the '1' key or Joy 3.
 
-## 4. The Cursor Stops Before the Edge of the Screen
-FOV Adjustment: If your gun is pointing at the physical edge of the monitor but the cursor stopped 2 inches early, your FOV is too high.
+Input Mode: Ensure your emulator is set to use Raw Input for the best experience with multiple guns.
 
-Decrease FOV_X or FOV_Y in the code to "stretch" the cursor movement further.
+## 5. Cursor Accuracy & DPI Scaling
+If the cursor "teleports" to corners or doesn't reach the edges of the screen:
 
-Increase FOV if the cursor hits the edge too quickly.
+DPI Check: Right-click your desktop > Display Settings. Check your Scale (e.g., 150%).
 
-5. Teensy Not Found / Can't Upload
-USB Type: In the Arduino IDE, you must set Tools > USB Type to "Keyboard + Mouse + Joystick".
+Firmware Sync: Ensure the SCALE variable in your code matches this exactly (e.g., 1.5).
 
-Cable Check: Ensure you are using a Data-Sync Micro-USB cable, not a "Charging Only" cable.
+FOV Tuning: If the cursor is perfectly centered but stops short of the edges, decrease the FOV_X or FOV_Y values in the code to stretch the movement.
+
+## 6. Axis Inversion
+If the gun moves Left when you point Right, or Up when you point Down:
+
+The Fix: You do not need to flip the sensor. In the loop() section of the code, look for the map() functions. Swap the last two numbers.
+
+Example to flip X: Change RES_X, 0 to 0, RES_X.
